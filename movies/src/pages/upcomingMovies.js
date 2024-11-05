@@ -23,7 +23,7 @@ const UpcomingMoviesPage = (props) => {
             action={(movie) => {
                 return (
                     <>
-                        <AddToWatchListIcon />
+                    <AddToWatchListIcon movie={movie}/>
                     </>
                     );
             }}

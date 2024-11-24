@@ -4,6 +4,7 @@ import PageTemplate from '../components/templateMovieListPage';
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
 import AddToWatchListIcon from "../components/cardIcons/addToWatchList";
+import Typography from "@mui/material/Typography";
 
 
 
@@ -18,7 +19,7 @@ const UpcomingMoviesPage = (props) => {
     localStorage.setItem('favorites', JSON.stringify(favorites))
     return (
         <PageTemplate
-            title="Upcoming Movies"
+        title={ <Typography variant="h4" component="p"> <span style={{ fontStyle: 'italic' }}>Upcoming</span> <span>🗓️</span> </Typography> }
             movies={movies}
             action={(movie) => {
                 return (

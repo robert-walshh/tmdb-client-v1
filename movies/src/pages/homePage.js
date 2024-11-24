@@ -4,6 +4,7 @@ import PageTemplate from '../components/templateMovieListPage';
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
 import AddToFavoritesIcon from '../components/cardIcons/addToFavorites'
+import Typography from "@mui/material/Typography";
 
 const HomePage = (props) => {
 
@@ -24,7 +25,7 @@ const HomePage = (props) => {
 
   return (
     <PageTemplate
-      title="Discover Movies"
+    title={ <Typography variant="h4" component="p"> <span style={{ fontStyle: 'italic' }}>Now Playing</span> <span>▶️</span> </Typography> }
       movies={movies}
       action={(movie) => {
         return <AddToFavoritesIcon movie={movie} />

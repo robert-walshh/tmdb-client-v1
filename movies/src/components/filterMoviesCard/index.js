@@ -55,11 +55,11 @@ export default function FilterMoviesCard(props) {
   return (
     <Card 
       sx={{
-        backgroundColor: "rgb(204, 204, 0)"
+        backgroundColor: "rgb(32, 40, 36)"
       }} 
       variant="outlined">
       <CardContent>
-        <Typography variant="h5" component="h1">
+        <Typography variant="h5" component="h1" sx={{ color: 'white' }}>
           <SearchIcon fontSize="large" />
           Filter the movies.
         </Typography>
@@ -97,7 +97,7 @@ export default function FilterMoviesCard(props) {
         title="Filter"
       />
       <CardContent>
-        <Typography variant="h5" component="h1">
+      <Typography variant="h5" component="h1" sx={{ color: 'white' }}>
           <SearchIcon fontSize="large" />
           Filter the movies.
           <br />

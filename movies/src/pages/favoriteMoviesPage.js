@@ -6,6 +6,7 @@ import { getMovie } from "../api/tmdb-api";
 import Spinner from '../components/spinner'
 import RemoveFromFavorites from "../components/cardIcons/removeFromFavorites";
 import WriteReview from "../components/cardIcons/writeReview";
+import Typography from "@mui/material/Typography";
 
 const FavoriteMoviesPage = () => {
   const {favorites: movieIds } = useContext(MoviesContext);
@@ -33,7 +34,7 @@ const FavoriteMoviesPage = () => {
 
   return (
     <PageTemplate
-      title="Favorite Movies"
+    title={ <Typography variant="h4" component="p"> <span style={{ fontStyle: 'italic' }}>Favorites</span> <span>❤️</span> </Typography> }
       movies={movies}
       action={(movie) => {
         return (

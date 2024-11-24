@@ -35,7 +35,7 @@ export default function MovieCard({ movie, action }) {
           ) : null
         }
         title={
-          <Typography variant="h5" component="p">
+          <Typography variant="h5" component="p" style={{ fontWeight: 'bold' }}>
             {movie.title}{" "}
           </Typography>
         }

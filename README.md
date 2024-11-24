@@ -1,6 +1,8 @@
 # TMDB Client 🎥
 **`Web App Development 2: Assignment 1`**
 
+**Robert Walsh**
+
 ---
 
 ### 💻 🔧 Languages and Tools
@@ -16,12 +18,30 @@
 ### Description ✏️
 
 A Web Application which pulls data using TMDB.
-- You can browse *Now Playing*, *Upcoming Movies*, *Top Rated Movies* and *Popular Movies*.
+
+*Existing Features*
+- You can browse *Upcoming Movies*, 
 - Favourite Movies and add them to your *Favourites*
-- See Movie Details such as a *Description*, *Genres*, *Runtime*, *Production Countries* and *Providers*
+- See Movie Details such as a *Description*, *Genres*, *Runtime*, *Production Countries*
 - View and write your own *Reviews*
 
+*New Features*
+- View *Now Playing*, *Top Rated Movies* and *Popular Movies*.
+- See which *Providers* are hosting the movie to Stream, Buy or Rent in Ireland
+
 ---
+
+### API Endpoints 📍
+- Now Playing - `movie/now_playing`
+- Upcoming - `movie/upcoming`
+- Top Rated - `movie/top_rated`
+- Popular - `movie/popular`
+- Watch Providers - `movie/id/watch/providers`
+- Reviews - `movie/id/reviews`
+- Movie Images - `movie/id/images`
+- Movie Genres - `genre/movie`
+
+
 
 ### Getting Started (Written for Linux/MacOS) ✨
 

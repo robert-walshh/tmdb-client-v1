@@ -9,6 +9,11 @@ import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews"
+import { getWatchProviders } from "../../api/tmdb-api";
+import { useQuery } from "react-query"; 
+import Spinner from '../spinner';
+import { Grid } from "@mui/material";
+import WatchProviderCard from "../watchProviderCard";
 
 
 
@@ -24,6 +29,28 @@ const chip = { margin: 0.5 };
 
 const MovieDetails = ({ movie }) => {  // Don't miss this!
   const [drawerOpen, setDrawerOpen] = useState(false);
+
+
+  const {data: providers, isLoading, isError} = useQuery(
+    ["movieProviders", movie.id],
+    () => getWatchProviders(movie.id),
+    {enables: ! !movie.id}
+  );
+
+  if (isLoading) return <Spinner />; // Show spinner while loading
+  if (isError) return <Typography>Error loading credits</Typography>;
+
+  const irishData = providers && providers.results && providers.results["IE"];
+const providersArray = irishData 
+  ? [
+      ...(irishData.flatrate || []).map(provider => ({ ...provider, type: 'Subscription' })),
+      ...(irishData.buy || []).map(provider => ({ ...provider, type: 'Buy' })),
+      ...(irishData.rent || []).map(provider => ({ ...provider, type: 'Rent' }))
+    ] 
+  : [];
+
+
+
 
   return (
     <>
@@ -71,6 +98,20 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
           </li>
         ))}
       </Paper>
+      
+      <Typography variant="h6" component="h4" sx={{ marginTop: 3 }}>
+        Providers
+      </Typography>
+      <Grid container spacing={2}>
+        {providersArray.map((provider, index) => (
+          provider && (
+          <Grid item key={provider.provider_id || index} xs={12} sm={6} md={4} lg={3}>
+            <WatchProviderCard results={provider} />
+          </Grid>
+          )
+        ))}
+      </Grid>
+
       <Fab
         color="secondary"
         variant="extended"

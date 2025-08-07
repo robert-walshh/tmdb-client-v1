@@ -34,10 +34,9 @@ const TemplateMoviePage = ({ movie, children }) => {
             justifyContent: "space-around",
           }}>
             <ImageList
-                sx={{
-                    height: "100vh",
-                }}
-                cols={1}
+              variant="masonry"
+              cols={3}
+              gap={8} 
             >
                 {images.map((image) => (
                     <ImageListItem key={image.file_path} cols={1}>

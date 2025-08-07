@@ -99,7 +99,7 @@ const providersArray = irishData
         ))}
       </Paper>
       
-      <Typography variant="h6" component="h4" sx={{ marginTop: 3 }}>
+      <Typography variant="h5" component="h3" sx={{ marginTop: 3 }}>
         Providers
       </Typography>
       <Grid container spacing={2}>

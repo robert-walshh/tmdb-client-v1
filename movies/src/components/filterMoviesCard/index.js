@@ -17,7 +17,7 @@ import Spinner from '../spinner'
 const formControl = 
   {
     margin: 1,
-    minWidth: 220,
+    minWidth: "90%",
     backgroundColor: "rgb(255, 255, 255)"
   };
 
@@ -55,13 +55,12 @@ export default function FilterMoviesCard(props) {
   return (
     <Card 
       sx={{
-        backgroundColor: "rgb(32, 40, 36)"
+        backgroundColor: "#f2f5f6"
       }} 
       variant="outlined">
       <CardContent>
-        <Typography variant="h5" component="h1" sx={{ color: 'white' }}>
+        <Typography variant="h5" component="h1" align="center">
           <SearchIcon fontSize="large" />
-          Filter the movies.
         </Typography>
         <TextField
       sx={{...formControl}}
@@ -96,13 +95,6 @@ export default function FilterMoviesCard(props) {
         image={img}
         title="Filter"
       />
-      <CardContent>
-      <Typography variant="h5" component="h1" sx={{ color: 'white' }}>
-          <SearchIcon fontSize="large" />
-          Filter the movies.
-          <br />
-        </Typography>
-      </CardContent>
     </Card>
   );
 }

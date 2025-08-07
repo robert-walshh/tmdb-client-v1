@@ -10,10 +10,12 @@ import Typography from "@mui/material/Typography";
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews"
 import { getWatchProviders } from "../../api/tmdb-api";
+import { getMovieCastList } from "../../api/tmdb-api";
 import { useQuery } from "react-query"; 
 import Spinner from '../spinner';
 import { Grid } from "@mui/material";
 import WatchProviderCard from "../watchProviderCard";
+import MovieCastList from "../movieCastList";
 
 
 
@@ -31,14 +33,20 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
   const [drawerOpen, setDrawerOpen] = useState(false);
 
 
-  const {data: providers, isLoading, isError} = useQuery(
+  const {data: providers, isLoading: providersLoading, isError: providersError } = useQuery(
     ["movieProviders", movie.id],
     () => getWatchProviders(movie.id),
     {enables: ! !movie.id}
   );
 
-  if (isLoading) return <Spinner />; // Show spinner while loading
-  if (isError) return <Typography>Error loading credits</Typography>;
+  const {data: cast, isLoading: castLoading, isError: castError } = useQuery(
+  ["movieCastList", movie.id],
+  () => getMovieCastList(movie.id),
+  { enabled: ! !movie.id}
+);
+
+  if (providersLoading || castLoading) return <Spinner />; // Show spinner while loading
+  if (providersError || castError) return <Typography>Error loading data</Typography>;
 
   const irishData = providers && providers.results && providers.results["IE"];
 const providersArray = irishData 
@@ -48,6 +56,8 @@ const providersArray = irishData
       ...(irishData.rent || []).map(provider => ({ ...provider, type: 'Rent' }))
     ] 
   : [];
+
+  const castArray = cast?.cast || [];
 
 
 
@@ -98,6 +108,19 @@ const providersArray = irishData
           </li>
         ))}
       </Paper>
+
+             <Typography variant="h5" component="h3" sx={{ marginTop: 3 }}>
+        Cast
+      </Typography>
+      <Grid container spacing={2}>
+        {castArray.map((cast, index) => (
+          cast && (
+          <Grid item key={cast.cast_id || index} xs={12} sm={6} md={4} lg={3}>
+            <MovieCastList results={cast} />
+          </Grid>
+          )
+        ))}
+      </Grid>
       
       <Typography variant="h5" component="h3" sx={{ marginTop: 3 }}>
         Providers

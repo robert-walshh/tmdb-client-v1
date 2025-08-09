@@ -5,8 +5,8 @@ import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
 import AddToFavoritesIcon from '../components/cardIcons/addToFavorites'
 import Typography from "@mui/material/Typography";
-import Pagination from "@mui/material/Pagination"; 
-import Box from "@mui/material/Box"; 
+import Pagination from "@mui/material/Pagination";
+import Box from "@mui/material/Box";
 
 const HomePage = (props) => {
 
@@ -30,21 +30,21 @@ const HomePage = (props) => {
   const favorites = movies.filter(m => m.favorite)
   localStorage.setItem('favorites', JSON.stringify(favorites))
 
-  const handlePageChange = (event,page) => {
+  const handlePageChange = (event, page) => {
     setCurrentPage(page);
   };
 
   return (
     <div>
-    <PageTemplate
-    title={ <Typography variant="h4" component="p"> <span style={{ fontStyle: 'italic' }}>Now Playing</span> <span>▶️</span> </Typography> }
-      movies={movies}
-      action={(movie) => {
-        return <AddToFavoritesIcon movie={movie} />
-      }}
-    />
+      <PageTemplate
+        title={<Typography variant="h4" component="p"> <span style={{ fontStyle: 'italic' }}>Now Playing</span> <span>▶️</span> </Typography>}
+        movies={movies}
+        action={(movie) => {
+          return <AddToFavoritesIcon movie={movie} />
+        }}
+      />
 
-     <Box sx={{ display: 'flex', justifyContent: 'center', mt: 3, mb: 3 }}>
+      <Box sx={{ display: 'flex', justifyContent: 'center', mt: 3, mb: 3 }}>
         <Pagination
           count={totalPages}
           page={currentPage}
@@ -54,7 +54,7 @@ const HomePage = (props) => {
           variant="outlined"
         />
       </Box>
-    </div > 
-);
+    </div >
+  );
 };
 export default HomePage;

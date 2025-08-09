@@ -14,7 +14,7 @@ const TopRatedMoviesPage = (props) => {
     if (isLoading) { return <Spinner /> }
     if (isError) { return <h1>{error.message}</h1> }
     const movies = data.results;
-    const totalPages = data.total_pages;
+    const totalPages = Math.min(data.total_pages, 500); // Limits pages to TMDB APIs hard limit of 500
     // Redundant, but necessary to avoid app crashing.
 
     const handlePageChange = (event, page) => {

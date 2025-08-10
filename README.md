@@ -27,7 +27,9 @@ A Web Application which pulls data using TMDB.
 
 *New Features*
 - View *Now Playing*, *Top Rated Movies* and *Popular Movies*.
-- See which *Providers* are hosting the movie to Stream, Buy or Rent in Ireland
+- See the *Cast List* within Movie Details.
+- See which *Providers* are hosting the movie to Stream, Buy or Rent in Ireland.
+- Added *Pagination* so multiple pages of results can be viewed for each category
 
 ---
 
@@ -36,10 +38,11 @@ A Web Application which pulls data using TMDB.
 - Upcoming - `movie/upcoming`
 - Top Rated - `movie/top_rated`
 - Popular - `movie/popular`
-- Watch Providers - `movie/id/watch/providers`
 - Reviews - `movie/id/reviews`
-- Movie Images - `movie/id/images`
 - Movie Genres - `genre/movie`
+- Movie Images - `movie/id/images`
+- Watch Providers - `movie/id/watch/providers`
+- Movie Cast - `movie/id/credits`
 
 
 
@@ -53,7 +56,7 @@ mkdir tmdb_client
 2. Clone Repo and go the app folder
 
 ```
-git clone https://github.com/robert-walshh/react-movie-labs
+git clone https://github.com/robert-walshh/tmdb-client-v1
 cd movies
 ```
 

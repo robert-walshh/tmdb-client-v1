@@ -11,7 +11,7 @@ import Box from "@mui/material/Box";
 
 const PopularMoviesPage = (props) => {
     const [currentPage, setCurrentPage] = useState(1);
-    const { data, error, isLoading, isError } = useQuery(['upcoming', currentPage], () => getPopularMovies(currentPage))
+    const { data, error, isLoading, isError } = useQuery(['popular', currentPage], () => getPopularMovies(currentPage))
     if (isLoading) { return <Spinner /> }
     if (isError) { return <h1>{error.message}</h1> }
     const movies = data.results;

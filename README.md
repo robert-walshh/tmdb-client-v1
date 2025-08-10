@@ -30,6 +30,7 @@ A Web Application which pulls data using TMDB.
 - See the *Cast List* within Movie Details.
 - See which *Providers* are hosting the movie to Stream, Buy or Rent in Ireland.
 - Added *Pagination* so multiple pages of results can be viewed for each category
+- *Watch List Page* to view all Upcoming Movies added to the Watch List
 
 ---
 
